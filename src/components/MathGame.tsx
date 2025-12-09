@@ -41,11 +41,12 @@ const generateRandomProblem = (): MathProblem => {
 };
 
 interface Props {
-  onGameComplete: (won: boolean) => void;
+  onScoreUpdate: (points: number) => void;
+  onGameEnd: () => void;
   gameDuration?: number;
 }
 
-const MathGame: React.FC<Props> = ({ onGameComplete, gameDuration = 10 }) => {
+const MathGame: React.FC<Props> = ({ onScoreUpdate, onGameEnd, gameDuration = 30 }) => {
   const [problem, setProblem] = useState<MathProblem>(generateRandomProblem());
   const [inputValue, setInputValue] = useState('');
   const [timeLeft, setTimeLeft] = useState(gameDuration);
@@ -63,7 +64,7 @@ const MathGame: React.FC<Props> = ({ onGameComplete, gameDuration = 10 }) => {
           setIsGameActive(false);
           setFeedback("Time's up!");
           setFeedbackType('incorrect');
-          setTimeout(() => onGameComplete(false), 1500);
+          setTimeout(() => onGameEnd(), 1500);
           return 0;
         }
         return prevTime - 1;
@@ -71,7 +72,7 @@ const MathGame: React.FC<Props> = ({ onGameComplete, gameDuration = 10 }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isGameActive, onGameComplete]);
+  }, [isGameActive, onGameEnd]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,22 +80,20 @@ const MathGame: React.FC<Props> = ({ onGameComplete, gameDuration = 10 }) => {
 
     const userAnswer = parseInt(inputValue, 10);
     if (!isNaN(userAnswer) && userAnswer === problem.answer) {
-      setIsGameActive(false);
-      setFeedback('Correct!');
+      onScoreUpdate(1);
+      setFeedback('Correct! +1');
       setFeedbackType('correct');
-      setTimeout(() => onGameComplete(true), 1500);
     } else {
-      setInputValue('');
-      setFeedback('Incorrect! Try again.');
+      onScoreUpdate(-1);
+      setFeedback('Incorrect! -1');
       setFeedbackType('incorrect');
-      // Hide feedback after a moment to allow another try
-      setTimeout(() => {
+    }
+    setInputValue('');
+    setProblem(generateRandomProblem());
+    setTimeout(() => {
         setFeedback('');
         setFeedbackType('');
       }, 1000);
-      // Optional: generate a new problem on wrong answer
-      // setProblem(generateRandomProblem());
-    }
   };
 
   const timerPercentage = (timeLeft / gameDuration) * 100;
@@ -210,7 +209,11 @@ const MathGame: React.FC<Props> = ({ onGameComplete, gameDuration = 10 }) => {
             disabled={!isGameActive}
             autoFocus
           />
-          <button className="math-submit-btn" type="submit" disabled={!isGameActive}>
+          <button
+            className="math-submit-btn"
+            type="submit"
+            disabled={!isGameActive}
+          >
             Check
           </button>
         </form>
