@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai Sharma - Portfolio</title>
+    <style>
+        :root {
+            --background-color: oklch(98.5% 0.005 240);
+            --text-color: oklch(25% 0.02 240);
+            --accent-color: oklch(55% 0.15 265);
+            --card-background: oklch(100% 0 0);
+            --border-color: oklch(94% 0.01 240);
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+            --font-display: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        }
+
+        @supports (font: -apple-system-body) {
+            :root {
+                --font-main: -apple-system, BlinkMacSystemFont, sans-serif;
+                --font-display: -apple-system, BlinkMacSystemFont, sans-serif;
+            }
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Global --- */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        section {
+            padding: 120px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-display);
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        /* --- Header --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 100;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 52px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100vh;
+            padding-top: 52px; /* Header height */
+        }
+
+        #hero h1 {
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        #hero p {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-top: 10px;
+            color: oklch(50% 0.01 240);
+        }
+
+        /* --- Projects Section --- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .project-card {
+            background-color: var(--card-background);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-top: 0;
+        }
+
+        .project-card p {
+            line-height: 1.6;
+            color: oklch(45% 0.015 240);
+        }
+        
+        .project-card .tags {
+            margin-top: 20px;
+        }
+
+        .project-card .tag {
+            display: inline-block;
+            background-color: var(--background-color);
+            color: var(--accent-color);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+
+        /* --- About & Skills Section --- */
+        #about .container, #skills .container, #contact .container {
+            max-width: 800px;
+            text-align: center;
+        }
+        #about p, #skills p, #contact p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        /* --- Footer --- */
+        .main-footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: oklch(60% 0.01 240);
+        }
+
+        .main-footer a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+         .main-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Animation --- */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Jai Sharma</h1>
+                <p>Creative Developer & Engineer</p>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="reveal-on-scroll">Selected Work</h2>
+                <div class="project-grid">
+                    <div class="project-card reveal-on-scroll">
+                        <h3>Project One: E-commerce Platform</h3>
+                        <p>A full-stack e-commerce site built with a modern stack, featuring a custom CMS, payment gateway integration, and a responsive user experience designed for high conversion.</p>
+                        <div class="tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">GraphQL</span>
+                        </div>
+                    </div>
+                    <div class="project-card reveal-on-scroll" style="transition-delay: 100ms;">
+                        <h3>Project Two: Data Visualization Dashboard</h3>
+                        <p>An interactive dashboard for visualizing complex datasets. Allows users to filter, sort, and explore data in real-time with D3.js, providing actionable insights at a glance.</p>
+                         <div class="tags">
+                            <span class="tag">D3.js</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Flask</span>
+                        </div>
+                    </div>
+                     <div class="project-card reveal-on-scroll" style="transition-delay: 200ms;">
+                        <h3>Project Three: Mobile Task Manager</h3>
+                        <p>A cross-platform mobile application for task management, built with React Native. Features offline support, cloud sync, and push notifications to keep users on track.</p>
+                         <div class="tags">
+                            <span class="tag">React Native</span>
+                            <span class="tag">Firebase</span>
+                        </div>
+                    </div>
+                     <div class="project-card reveal-on-scroll" style="transition-delay: 300ms;">
+                        <h3>Project Four: Open Source Component Library</h3>
+                        <p>A lightweight and accessible component library for web developers. Published on npm and focused on performance and ease of use, with comprehensive documentation.</p>
+                        <div class="tags">
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Storybook</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                 <h2 class="reveal-on-scroll">About Me</h2>
+                <p class="reveal-on-scroll">I'm a passionate developer with a knack for creating elegant, high-performance web experiences. With a background in both design and engineering, I bridge the gap between aesthetics and functionality. I thrive on solving complex problems and am always eager to learn and apply new technologies to build beautiful, useful products.</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                 <h2 class="reveal-on-scroll">Core Technologies</h2>
+                <p class="reveal-on-scroll">A brief overview of my primary technical skills. I'm always learning and adapting to new tools.</p>
+                <!-- Skill list will go here -->
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                 <h2 class="reveal-on-scroll">Get In Touch</h2>
+                <p class="reveal-on-scroll">I'm currently available for freelance work and open to discussing new projects. Feel free to reach out.</p>
+                <!-- Contact form or email link will go here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Jai Sharma. Inspired by the best. <br>
+            Connect with me on <a href="#">LinkedIn</a> or <a href="#">GitHub</a>.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const targets = document.querySelectorAll('.reveal-on-scroll');
+            targets.forEach(target => {
+                observer.observe(target);
+            });
+        });
+    </script>
+
+</body>
+</html>
