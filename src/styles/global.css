@@ -1,0 +1,391 @@
+:root {
+    --background-color: oklch(98.5% 0.005 240);
+    --text-color: oklch(25% 0.02 240);
+    --accent-color: oklch(55% 0.15 265);
+    --card-background: oklch(100% 0 0);
+    --border-color: oklch(94% 0.01 240);
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    --font-display: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+@supports (font: -apple-system-body) {
+    :root {
+        --font-main: -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-display: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+/* --- Global --- */
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+section {
+    padding: 120px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+/* --- Header --- */
+.main-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 100;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 52px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Hero Section --- */
+#hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 60px;
+    height: 80vh;
+    padding-top: 52px; /* Header height */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#hero .hero-content {
+    text-align: left;
+}
+
+#hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    margin: 0;
+}
+
+#hero p {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 20px;
+    color: oklch(50% 0.01 240);
+    max-width: 550px;
+}
+
+.hero-visual {
+    height: 400px;
+}
+
+/* --- Projects Section --- */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+}
+
+.project-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.project-card h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.project-card p {
+    line-height: 1.6;
+    color: oklch(45% 0.015 240);
+}
+
+.project-card .tags {
+    margin-top: 20px;
+}
+
+.project-card .tag {
+    display: inline-block;
+    background-color: var(--background-color);
+    color: var(--accent-color);
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+/* --- About & Skills Section --- */
+#about .container, #skills .container, #contact .container {
+    max-width: 800px;
+    text-align: center;
+}
+#about p, #skills p, #contact p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* --- Footer --- */
+.main-footer {
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    color: oklch(60% 0.01 240);
+}
+
+.main-footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+ .main-footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- Animation --- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Contact Section --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.contact-card {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.contact-card svg {
+    width: 48px;
+    height: 48px;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.contact-card h3 {
+    font-size: 1.4rem;
+    margin: 0 0 10px;
+}
+
+.contact-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: oklch(45% 0.015 240);
+}
+/* Styles for interactive contact tile */
+.interactive-tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px; /* Adjust as needed */
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Simplified shadow */
+    padding: 2rem;
+    text-align: center;
+    margin-top: 60px; /* Align with contact-grid margin */
+}
+
+.play-button {
+    background-color: var(--accent-color); /* Use existing accent color */
+    color: white; /* Ensure good contrast */
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 9999px; /* Pill shape */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.play-button:hover {
+    background-color: oklch(50% 0.15 265); /* Slightly darker accent */
+    transform: translateY(-2px);
+}
+
+.play-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.game-container {
+    background-color: var(--card-background); /* Consistent with cards */
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+    width: 100%;
+    max-width: 500px; /* Limit game container width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1rem; /* Space between elements */
+}
+/* General game card styles */
+.game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.game-timer {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Math Game specific styles */
+.math-game input[type="number"] {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    text-align: center;
+    width: 80%;
+    max-width: 200px;
+}
+
+.math-game button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.math-game button:hover {
+    background-color: oklch(50% 0.15 265);
+}
+
+/* Word Scramble Game specific styles */
+.word-scramble-game .game-hint {
+    font-style: italic;
+    color: oklch(45% 0.015 240);
+    margin-bottom: 1rem;
+}
+
+.scrambled-letters {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.letter-tile {
+    background-color: var(--background-color);
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.letter-tile:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.letter-tile.selected {
+    background-color: oklch(30% 0.15 265); /* Darker accent */
+    color: white;
+    transform: scale(1.1);
+}

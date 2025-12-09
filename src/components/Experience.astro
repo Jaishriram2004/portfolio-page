@@ -1,0 +1,45 @@
+---
+const experiences = [
+    {
+        title: "Software Development Engineer Intern @ Amazon",
+        date: "Jan 2025 – Jun 2025",
+        description: "Developed a Kindle E-Reader feature in React Native and C++ for pinning content with cloud sync. Optimized internal workflow migration with AWS, cutting execution time by 40%.",
+        tags: ["React Native", "C++", "AWS"],
+        delay: 0
+    },
+    {
+        title: "Machine Learning Intern @ Samsung R&D",
+        date: "Jun 2023 – Dec 2023",
+        description: "Developed an audio classification model using a Vision Transformer (ViT) on spectrogram representations, achieving 98% accuracy and a Best Project Award.",
+        tags: ["Python", "PyTorch", "ViT"],
+        delay: 100
+    }
+];
+---
+
+<section id="experience">
+    <div class="container">
+        <h2 class="reveal-on-scroll">Experience</h2>
+        <div class="project-grid">
+            {experiences.map(exp => (
+                <div class="project-card reveal-on-scroll" style={{ transitionDelay: `${exp.delay}ms` }}>
+                    <h3>{exp.title}</h3>
+                    <p class="date">{exp.date}</p>
+                    <p>{exp.description}</p>
+                    <div class="tags">
+                        {exp.tags.map(tag => (
+                            <span class="tag">{tag}</span>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+<style>
+    .date {
+        font-size: 0.9em;
+        color: #aaa;
+        margin-bottom: 1em;
+    }
+</style>

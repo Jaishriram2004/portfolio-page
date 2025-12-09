@@ -1,0 +1,34 @@
+---
+import InteractiveContactTile from './InteractiveContactTile.tsx';
+---
+<section id="contact">
+    <div class="container">
+         <h2 class="reveal-on-scroll">Get In Touch</h2>
+        <p class="reveal-on-scroll">Let's connect! Here's how you can reach me:</p>
+        <InteractiveContactTile client:load>
+            <div class="contact-grid">
+                <a href="mailto:jaishrirampm@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <h3>Email</h3>
+                    <p>Send me a message</p>
+                </a>
+                <a href="https://github.com/Jaishriram2004" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 3c0-1.33-1.09-2.42-2.42-2.42A2.42 2.42 0 0 0 15 3.82c-.87-.72-2.31-.96-3.41-.72A2.42 2.42 0 0 0 9 3.82c-.87-.72-2.31-.96-3.41-.72C4.09 1.42 3 2.51 3 3.82A5.07 5.07 0 0 0 3.91 3c-.05.34-.1.68-.1 1a5.44 5.44 0 0 0-2 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    <h3>GitHub</h3>
+                    <p>View my repositories</p>
+                </a>
+                <a href="https://leetcode.com/u/Jai-shri-ram/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    <h3>LeetCode</h3>
+                    <p>Check my coding profile</p>
+                </a>
+                <a href="https://www.linkedin.com/in/jaishriram-pm/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with me</p>
+                </a>
+            </div>
+        </InteractiveContactTile>
+
+    </div>
+</section>
